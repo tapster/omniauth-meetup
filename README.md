@@ -31,7 +31,7 @@ end
 ```
 You can then implement your authentication as usual with OmniAuth as
 shown in the excellent [Railscast
-#241](http://railscasts.com/episodes/241-simple-omniauth)
+241](http://railscasts.com/episodes/241-simple-omniauth)
 
 ##Authentication Hash
 
@@ -47,12 +47,9 @@ Here's an example *Authentication Hash* available in
    "photo_url"=>
     "http://photos1.meetupstatic.com/photos/member/elvis_pic.jpeg"},
  "credentials"=>
-  {"token"=>"abc123...",         # OAuth 2.0 access_token, which you may
-wish to store
-   "refresh_token"=>"bcd234...", # This token can be used to refresh
-your access_token later
-   "expires_at"=>1324720198,     # when the access token expires (Meetup
-tokens expire in 1 hour)
+  {"token"=>"abc123...",         # OAuth 2.0 access_token, which you may wish to store
+   "refresh_token"=>"bcd234...", # This token can be used to refresh your access_token later
+   "expires_at"=>1324720198,     # when the access token expires (Meetup tokens expire in 1 hour)
    "expires"=>true},
  "extra"=>
   {"raw_info"=>
