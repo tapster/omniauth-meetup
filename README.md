@@ -26,8 +26,56 @@ Here's a quick example, adding the middleware to a Rails app in
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, ENV['MEETUP_KEY'], ENV['MEETUP_SECRET']
+  provider :meetup, ENV['MEETUP_KEY'], ENV['MEETUP_SECRET']
 end
+```
+You can then implement your authentication as usual with OmniAuth as
+shown in the excellent [Railscast
+#241](http://railscasts.com/episodes/241-simple-omniauth)
+
+##Authentication Hash
+
+Here's an example *Authentication Hash* available in
+`request.env['omniauth.auth']`:
+
+```ruby
+{"provider"=>"meetup",
+ "uid"=>"0",
+ "info"=>
+  {"id"=>"0",
+   "name"=>"elvis",
+   "photo_url"=>
+    "http://photos1.meetupstatic.com/photos/member/elvis_pic.jpeg"},
+ "credentials"=>
+  {"token"=>"abc123...",         # OAuth 2.0 access_token, which you may
+wish to store
+   "refresh_token"=>"bcd234...", # This token can be used to refresh
+your access_token later
+   "expires_at"=>1324720198,     # when the access token expires (Meetup
+tokens expire in 1 hour)
+   "expires"=>true},
+ "extra"=>
+  {"raw_info"=>
+    {"zip"=>"meetup1",
+     "lon"=>"-90.027181",
+     "photo_url"=>
+      "http://photos1.meetupstatic.com/photos/member/elvis_pic.jpeg",
+     "link"=>"http://www.meetup.com/members/0",
+     "state"=>"",
+     "lang"=>"en_US",
+     "city"=>"Memphis",
+     "country"=>"us",
+     "id"=>"0",
+     "visited"=>"2011-12-24 03:49:54 EST",
+     "topics"=>[],
+     "joined"=>"Sun May 14 20:27:38 EDT 2006",
+     "bio"=>"",
+     "name"=>"elvis",
+     "other_services"=>{"twitter"=>{"identifier"=>"@elvis"}},
+     "lat"=>"35.046677"
+    }
+  }
+}
 ```
 
 ## License
