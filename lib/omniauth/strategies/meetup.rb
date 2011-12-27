@@ -21,7 +21,7 @@ module OmniAuth
         {
           :id => raw_info['id'],
           :name => raw_info['name'],
-          :photo_url => raw_info['photo_url']
+          :photo_url => raw_info['photo']['photo_link']
         }
       end
 
@@ -30,7 +30,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get("/members?member_id=self&access_token=#{access_token.token}").parsed["results"].first
+        @raw_info ||= access_token.get("/2/member/self?access_token=#{access_token.token}").parsed
       end
 
     end

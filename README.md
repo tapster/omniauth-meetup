@@ -40,12 +40,11 @@ Here's an example *Authentication Hash* available in
 
 ```ruby
 {"provider"=>"meetup",
- "uid"=>"0",
+ "uid"=>0,
  "info"=>
-  {"id"=>"0",
+  {"id"=>0,
    "name"=>"elvis",
-   "photo_url"=>
-    "http://photos1.meetupstatic.com/photos/member/elvis_pic.jpeg"},
+   "photo_url"=>"http://photos3.meetupstatic.com/photos/member_pic_0.jpeg"},
  "credentials"=>
   {"token"=>"abc123...",         # OAuth 2.0 access_token, which you may wish to store
    "refresh_token"=>"bcd234...", # This token can be used to refresh your access_token later
@@ -53,23 +52,23 @@ Here's an example *Authentication Hash* available in
    "expires"=>true},
  "extra"=>
   {"raw_info"=>
-    {"zip"=>"meetup1",
-     "lon"=>"-90.027181",
-     "photo_url"=>
-      "http://photos1.meetupstatic.com/photos/member/elvis_pic.jpeg",
+    {"lon"=>-90.027181,
      "link"=>"http://www.meetup.com/members/0",
-     "state"=>"",
      "lang"=>"en_US",
+     "photo"=>
+      {"photo_link"=> "http://photos3.meetupstatic.com/photos/member_pic_0.jpeg",
+       "highres_link"=> "http://photos1.meetupstatic.com/photos/member_pic_0_hires.jpeg",
+       "thumb_link"=> "http://photos1.meetupstatic.com/photos/member_pic_0_thumb.jpeg",
+       "photo_id"=>0},
      "city"=>"Memphis",
      "country"=>"us",
-     "id"=>"0",
-     "visited"=>"2011-12-24 03:49:54 EST",
+     "visited"=>1325001005000,
+     "id"=>0,
      "topics"=>[],
-     "joined"=>"Sun May 14 20:27:38 EDT 2006",
-     "bio"=>"",
+     "joined"=>1147652858000,
      "name"=>"elvis",
      "other_services"=>{"twitter"=>{"identifier"=>"@elvis"}},
-     "lat"=>"35.046677"
+     "lat"=>35.046677
     }
   }
 }
