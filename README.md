@@ -1,5 +1,8 @@
 # OmniAuth Meetup
 
+[![Build
+Status](https://secure.travis-ci.org/tapster/omniauth-meetup.png)](http://travis-ci.org/tapster/omniauth-meetup)
+
 `OmniAuth::Strategies::Meetup` is an OmniAuth strategy for authenticating to
 meetup.com with OAuth2. Read detailed information about the meetup.com
 implementation of OAuth2
