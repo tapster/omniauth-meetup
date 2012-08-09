@@ -21,7 +21,7 @@ module OmniAuth
         {
           :id => raw_info['id'],
           :name => raw_info['name'],
-          :photo_url => raw_info['photo']['photo_link']
+          :photo_url => (raw_info['photo'].present? ? raw_info['photo']['photo_link'] : nil)
         }
       end
 
