@@ -5,8 +5,6 @@ describe OmniAuth::Strategies::Meetup do
     OmniAuth::Strategies::Meetup.new(nil, @options || {})
   end
 
-  it_should_behave_like 'an oauth2 strategy'
-
   describe '#client' do
     it 'should have the correct meetup site' do
       subject.client.site.should eq("https://api.meetup.com")
