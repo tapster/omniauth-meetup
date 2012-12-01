@@ -24,7 +24,7 @@ module OmniAuth
           :photo_url => (raw_info['photo'].present? ? raw_info['photo']['photo_link'] : nil),
           :urls => { 'public_profile' => raw_info['link'] },
           :description => raw_info['bio'],
-          :location => [raw_info['city'], raw_info['state'], raw_info['country']].reject(&:blank?).join(', ')
+          :location => raw_info.slice('city', 'state', 'country').values.reject(&:blank?).join(', ')
         }
       end
 
