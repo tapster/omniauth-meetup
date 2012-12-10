@@ -22,6 +22,7 @@ module OmniAuth
           :id => raw_info['id'],
           :name => raw_info['name'],
           :photo_url => (raw_info.key?('photo') ? raw_info['photo']['photo_link'] : nil),
+          :image => (raw_info.key?('photo') ? raw_info['photo']['photo_link'] : nil),
           :urls => { :public_profile => raw_info['link'] },
           :description => raw_info['bio'],
           :location => [raw_info['city'], raw_info['state'], raw_info['country']].reject{|v| !v || v.empty?}.join(', ')

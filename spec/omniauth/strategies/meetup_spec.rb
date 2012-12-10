@@ -45,6 +45,13 @@ describe OmniAuth::Strategies::Meetup do
       subject.info[:photo_url].should == nil
     end
 
+    it 'returns the image from raw_info if available' do
+      subject.stub(:raw_info) { { 'photo' => { 'photo_link' => 'http://meetup.com/bert.jpg' } }}
+      subject.info[:image].should == 'http://meetup.com/bert.jpg'
+      subject.stub(:raw_info) {{}}
+      subject.info[:image].should == nil
+    end
+    
     it 'returns the public_profile url' do
       subject.stub(:raw_info) { { 'link' => 'http://meetup.com/bert' }}
       subject.info[:urls][:public_profile].should == 'http://meetup.com/bert'
