@@ -20,7 +20,7 @@ Then `bundle install`.
 
 ## Usage
 
-To get stared you will need to register an OAuth Consumer in your
+To get started you will need to register an OAuth Consumer in your
 meetup.com account
 [here](http://www.meetup.com/meetup_api/oauth_consumers/)
 
