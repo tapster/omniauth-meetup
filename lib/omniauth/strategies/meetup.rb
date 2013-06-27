@@ -34,7 +34,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= JSON.parse(access_token.get("/2/member/self?key=#{access_token.token}&access_token=#{access_token.token}").body)
+        @raw_info ||= JSON.parse(access_token.get('/2/member/self').body)
       end
 
     end
