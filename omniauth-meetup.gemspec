@@ -1,20 +1,16 @@
 # -*- encoding: utf-8 -*-
-$LOAD_PATH.push File.expand_path('../lib', __FILE__)
-require 'omniauth-meetup/version'
-
 Gem::Specification.new do |gem|
   gem.name        = 'omniauth-meetup'
-  gem.version     = Omniauth::Meetup::VERSION
+  gem.version     = '0.0.8'
   gem.authors     = ['Miles Woodroffe']
   gem.email       = ['miles@thespecials.com']
   gem.homepage    = 'http://github.com/tapster/omniauth-meetup'
   gem.description = 'Meetup.com authentication handler for OmniAuth'
   gem.summary     = gem.description
 
-  gem.executables   = `git ls-files -- bin/*`.split('\n').map { |f| File.basename(f) }
-  gem.files         = `git ls-files`.split('\n')
-  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split('\n')
   gem.require_paths = ['lib']
+  gem.files = ['.gitignore', '.rspec', '.travis.yml', 'Gemfile', 'README.md', 'Rakefile', 'lib/omniauth-meetup.rb', 'lib/omniauth-meetup/version.rb', 'lib/omniauth/strategies/meetup.rb', 'omniauth-meetup.gemspec']
+  gem.test_files = ['./spec/omniauth/strategies/meetup_spec.rb', 'spec/spec_helper.rb']
 
   # specify any dependencies here; for example:
   gem.add_dependency 'omniauth', '~> 1.0'
