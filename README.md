@@ -32,6 +32,13 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :meetup, ENV['MEETUP_KEY'], ENV['MEETUP_SECRET']
 end
 ```
+or with Devise
+
+```ruby
+  config.omniauth :meetup, ENV['MEETUP_KEY'], ENV['MEETUP_SECRET'], callback_url: 'http://example.com/users/auth/meetup/callback'
+```
+**Starting from version 1.4 in omniauth-oauth2 you must provide same callback url you have provided on API dashboard otherwise authentication won't work.**
+
 You can then implement your authentication as usual with OmniAuth as
 shown in the excellent [Railscast
 241](http://railscasts.com/episodes/241-simple-omniauth)
