@@ -13,7 +13,7 @@ implementation of OAuth2
 Add to your `Gemfile`:
 
 ```ruby
-    gem 'omniauth-meetup'
+  gem 'omniauth-meetup'
 ```
 
 Then `bundle install`.
