@@ -6,69 +6,69 @@ describe OmniAuth::Strategies::Meetup do
   end
 
   describe '#client' do
-    it 'should have the correct meetup site' do
-      subject.client.site.should eq("https://api.meetup.com")
+    it 'has a correct api url' do
+      expect(subject.client.site).to eq('https://api.meetup.com')
     end
 
-    it 'should have the correct authorization url' do
-      subject.client.options[:authorize_url].should eq("https://secure.meetup.com/oauth2/authorize")
+    it 'has a correct api authorization url' do
+      expect(subject.client.options[:authorize_url]).to eq('https://secure.meetup.com/oauth2/authorize')
     end
 
-    it 'should have the correct token url' do
-      subject.client.options[:token_url].should eq('https://secure.meetup.com/oauth2/access')
+    it 'has a correct api token auth url' do
+      expect(subject.client.options[:token_url]).to eq('https://secure.meetup.com/oauth2/access')
     end
   end
 
   describe '#callback_path' do
-    it 'should have the correct callback path' do
-      subject.callback_path.should eq('/auth/meetup/callback')
+    it 'has a correct callback path' do
+      expect(subject.callback_path).to eq('/auth/meetup/callback')
     end
   end
 
   describe '#uid' do
     it 'returns the uid from raw_info' do
-      subject.stub(:raw_info) { { 'id' => '999' } }
-      subject.uid.should == '999'
+      allow(subject).to receive(:raw_info).and_return('id' => '999')
+      expect(subject.uid).to eq('999')
     end
   end
 
   describe '#info' do
     it 'returns the name from raw_info' do
-      subject.stub(:raw_info) { { 'name' => 'Bert' }}
-      subject.info[:name].should == 'Bert'
+      allow(subject).to receive(:raw_info).and_return('name' => 'Bert')
+      expect(subject.info[:name]).to eq('Bert')
     end
 
     it 'returns the photo_url from raw_info if available' do
-      subject.stub(:raw_info) { { 'photo' => { 'photo_link' => 'http://meetup.com/bert.jpg' } }}
-      subject.info[:photo_url].should == 'http://meetup.com/bert.jpg'
-      subject.stub(:raw_info) {{}}
-      subject.info[:photo_url].should == nil
+      allow(subject).to receive(:raw_info).and_return('photo' => { 'photo_link' => 'http://meetup.com/bert.jpg' })
+      expect(subject.info[:photo_url]).to eq('http://meetup.com/bert.jpg')
+      allow(subject).to receive(:raw_info).and_return({})
+      expect(subject.info[:photo_url]).to eq(nil)
     end
 
     it 'returns the image from raw_info if available' do
-      subject.stub(:raw_info) { { 'photo' => { 'photo_link' => 'http://meetup.com/bert.jpg' } }}
-      subject.info[:image].should == 'http://meetup.com/bert.jpg'
-      subject.stub(:raw_info) {{}}
-      subject.info[:image].should == nil
+      allow(subject).to receive(:raw_info).and_return('photo' => { 'photo_link' => 'http://meetup.com/bert.jpg' })
+      expect(subject.info[:image]).to eq('http://meetup.com/bert.jpg')
+      allow(subject).to receive(:raw_info).and_return({})
+      expect(subject.info[:image]).to eq(nil)
     end
-    
+
     it 'returns the public_profile url' do
-      subject.stub(:raw_info) { { 'link' => 'http://meetup.com/bert' }}
-      subject.info[:urls][:public_profile].should == 'http://meetup.com/bert'
+      allow(subject).to receive(:raw_info).and_return('link' => 'http://meetup.com/bert')
+      expect(subject.info[:urls][:public_profile]).to eq('http://meetup.com/bert')
     end
 
     it 'returns the description from raw_info' do
-      subject.stub(:raw_info) { { 'bio' => 'My name is Bert.' }}
-      subject.info[:description].should == 'My name is Bert.'
+      allow(subject).to receive(:raw_info).and_return('bio' => 'My name is Bert.')
+      expect(subject.info[:description]).to eq('My name is Bert.')
     end
 
     it 'returns the location from raw_info' do
-      subject.stub(:raw_info) { { 'city' => 'Los Angeles', 'state' => 'CA', 'country' => 'USA' }}
-      subject.info[:location].should == 'Los Angeles, CA, USA'
-      subject.stub(:raw_info) { { 'city' => 'Tokyo', 'country' => 'Japan' }}
-      subject.info[:location].should == 'Tokyo, Japan'
-      subject.stub(:raw_info) {{}}
-      subject.info[:location].should == ''
+      allow(subject).to receive(:raw_info).and_return('city' => 'Los Angeles', 'state' => 'CA', 'country' => 'USA')
+      expect(subject.info[:location]).to eq('Los Angeles, CA, USA')
+      allow(subject).to receive(:raw_info).and_return('city' => 'Tokyo', 'country' => 'Japan')
+      expect(subject.info[:location]).to eq('Tokyo, Japan')
+      allow(subject).to receive(:raw_info).and_return({})
+      expect(subject.info[:location]).to eq('')
     end
   end
 end
